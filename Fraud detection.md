@@ -1,4 +1,4 @@
-### Importing files
+### Importing necessary libraries
 
 ```
 import numpy as np
@@ -12,14 +12,27 @@ from sklearn.ensemble import IsolationForest
 from sklearn.neighbors import LocalOutlierFactor
 from sklearn.svm import OneClassSVM
 from pylab import rcParams
-rcParams['figure.figsize'] = 14, 8
-RANDOM_SEED = 42
-LABELS = ["Normal", "Fraud"]
 ```
+```
+import pandas as pd
+from imblearn.over_sampling import SMOTE
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix,accuracy_score,precision_score
+from sklearn import metrics
+from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
+```
+
 ### Load the dataset
 ```
 data = pd.read_csv('credit card.csv',sep=',')
 data.head()
+```
+```
+rcParams['figure.figsize'] = 14, 8
+RANDOM_SEED = 42
+LABELS = ["Normal", "Fraud"]
 ```
 ```
 data.info()
