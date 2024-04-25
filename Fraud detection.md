@@ -59,9 +59,9 @@ plt.xticks(range(2), LABELS)
 plt.xlabel("Class")
 
 plt.ylabel("Frequency")
+``` 
 ```
-### Get the Fraud and the normal dataset 
-```
+#Get the Fraud and the normal dataset
 fraud = data[data['Class']==1]
 normal = data[data['Class']==0]
 ```
