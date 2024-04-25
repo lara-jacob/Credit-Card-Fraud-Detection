@@ -32,15 +32,17 @@ from sklearn.linear_model import LogisticRegression
 data = pd.read_csv('credit card.csv',sep=',')
 data.head()
 ```
+
+## Exploratory Data Analysis
+
+```
+data.info()
+```
 ```
 rcParams['figure.figsize'] = 14, 8
 RANDOM_SEED = 42
 LABELS = ["Normal", "Fraud"]
 ```
-```
-data.info()
-```
-## Exploratory Data Analysis
 ```
 data.isnull()
 ```
