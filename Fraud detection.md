@@ -1,3 +1,6 @@
+```
+pip install imbalanced-learn
+```
 ### Importing necessary libraries
 
 ```
