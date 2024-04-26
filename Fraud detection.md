@@ -25,18 +25,20 @@ from sklearn.metrics import classification_report, confusion_matrix,accuracy_sco
 from sklearn import metrics
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
+from sklearn import tree
+from sklearn.tree import DecisionTreeClassifier
 ```
 
 ### Load the dataset
 ```
-data = pd.read_csv('credit card.csv',sep=',')
-data.head()
+df = pd.read_csv('credit card.csv',sep=',')
+df.head()
 ```
 
 ## Exploratory Data Analysis
 
 ```
-data.info()
+df.info()
 ```
 ```
 rcParams['figure.figsize'] = 14, 8
@@ -44,13 +46,13 @@ RANDOM_SEED = 42
 LABELS = ["Normal", "Fraud"]
 ```
 ```
-data.isnull()
+df.isnull()
 ```
 ```
-data.isnull().values.any()
+df.isnull().values.any()
 ```
 ```
-count_class = pd.value_counts(data['Class'], sort = True)
+count_class = pd.value_counts(df['Class'], sort = True)
 
 count_class.plot(kind = 'bar', rot=0)
 
@@ -64,8 +66,8 @@ plt.ylabel("Frequency")
 ``` 
 ```
 #Get the Fraud and the normal dataset
-fraud = data[data['Class']==1]
-normal = data[data['Class']==0]
+fraud = df[df['Class']==1]
+normal = df[df['Class']==0]
 ```
 
 ```
@@ -105,11 +107,11 @@ plt.show()
 ```
 ### Correlation
 ```
-import seaborn as sns
-corrmatrix = data.corr()
+corrmatrix = df.corr()
 top_corr_features = corrmatrix.index
 plt.figure(figsize=(20,20))
-g=sns.heatmap(data[top_corr_features].corr(),annot=True,cmap="RdYlGn")
+#plot heat map
+g=sns.heatmap(df[top_corr_features].corr(),annot=True,cmap="RdYlGn")
 ```
 
 
