@@ -156,7 +156,7 @@ logistic_precision = precision_score(y_test, y_pred)
 print("Logistic Regression Precision:", logistic_precision)
 ```
 ```
-#Cofusion Matrix
+#Confusion Matrix
 cnf_matrix = metrics.confusion_matrix(y_test, y_pred)
 cnf_matrix
 
@@ -201,7 +201,7 @@ rf_precision = precision_score(y_test, y_pred3)
 print("RandomForestClassifier Precision:", rf_precision)
 ```
 ```
-#Cofusion Matrix
+#Confusion Matrix
 print("Confusion Matrix:")
 con_mat=confusion_matrix(y_test, y_pred3)
 print(con_mat)
@@ -254,7 +254,7 @@ d_precision = precision_score(y_test, y_pred1)
 print("decision tree Precision:", d_precision)
 ```
 ```
-#Cofusion Matrix
+#Confusion Matrix
 cnf1_matrix=confusion_matrix(y_test, y_pred1)
 print("Confusion Matrix:")
 print(cnf1_matrix)
