@@ -274,7 +274,7 @@ plt.title('Confusion matrix', y=1.1)
 plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
 ```
-#### Classification report of Rf classifier
+#### Classification report of decision tree
 ```
 print("\nClassification Report of decision tree(entropy):")
 print(classification_report(y_test, y_pred1))
