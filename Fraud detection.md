@@ -126,6 +126,66 @@ nan_indices = y_train.index[y_train.isnull()]
 X_train_cleaned = X_train.drop(index=nan_indices)
 y_train_cleaned = y_train.drop(index=nan_indices)
 ```
+### Balancing the Dataset
+```
+print("Class distribution before SMOTE:")
+print(y_train.value_counts())
+```
+```
+smote = SMOTE(random_state=42)
+X_train_balanced, y_train_balanced = smote.fit_resample(X_train_cleaned, y_train_cleaned)
+```
+```
+print("\nClass distribution after SMOTE:")
+print(pd.Series(y_train_balanced).value_counts())
+```
+### Training model using logistic regression
+```
+logreg = LogisticRegression(max_iter=1000, random_state=42)
+logreg.fit(X_train_balanced, y_train_balanced)
+```
+```
+y_pred = logreg.predict(X_test)
+```
+```
+logistic_accuracy = accuracy_score(y_test, y_pred)
+print("Logistic Regression Accuracy:", logistic_accuracy)
+```
+```
+logistic_precision = precision_score(y_test, y_pred)
+print("Logistic Regression Precision:", logistic_precision)
+```
+```
+#Cofusion Matrix
+cnf_matrix = metrics.confusion_matrix(y_test, y_pred)
+cnf_matrix
+
+logistic_conf_matrix = confusion_matrix(y_test, y_pred)
+print("Logistic Regression Confusion Matrix:")
+print(logistic_conf_matrix)
+
+%matplotlib inline
+class_names=[0,1] # name  of classes
+fig, ax = plt.subplots()
+tick_marks = np.arange(len(class_names))
+plt.xticks(tick_marks, class_names)
+plt.yticks(tick_marks, class_names)
+# create heatmap
+sns.heatmap(pd.DataFrame(cnf_matrix), annot=True, cmap="YlGnBu" ,fmt='g')
+ax.xaxis.set_label_position("top")
+plt.tight_layout()
+plt.title('Confusion matrix', y=1.1)
+plt.ylabel('Actual label')
+plt.xlabel('Predicted label')
+```
+#### Classification report of Log_regression
+```
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+```
+
+
+
 
 
 
