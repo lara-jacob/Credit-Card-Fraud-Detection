@@ -184,6 +184,54 @@ print("\nClassification Report:")
 print(classification_report(y_test, y_pred))
 ```
 
+### Training model using Rf classifier
+```
+rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_classifier.fit(X_train_balanced, y_train_balanced)
+```
+```
+y_pred3 = rf_classifier.predict(X_test)
+```
+```
+rf_accuracy = accuracy_score(y_test, y_pred3)
+print("RandomForestClassifier Accuracy:",rf_accuracy)
+```
+```
+rf_precision = precision_score(y_test, y_pred3)
+print("RandomForestClassifier Precision:", rf_precision)
+```
+```
+#Cofusion Matrix
+print("Confusion Matrix:")
+con_mat=confusion_matrix(y_test, y_pred3)
+print(con_mat)
+```
+```
+%matplotlib inline
+class_names=[0,1] # name  of classes
+fig, ax = plt.subplots()
+tick_marks = np.arange(len(class_names))
+plt.xticks(tick_marks, class_names)
+plt.yticks(tick_marks, class_names)
+# create heatmap
+sns.heatmap(pd.DataFrame(con_mat), annot=True, cmap="YlGnBu" ,fmt='g')
+ax.xaxis.set_label_position("top")
+plt.tight_layout()
+plt.title('Confusion matrix', y=1.1)
+plt.ylabel('Actual label')
+plt.xlabel('Predicted label')
+```
+#### Classification report of Rf classifier
+```
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred3))
+```
+
+
+
+
+
+
 
 
 
