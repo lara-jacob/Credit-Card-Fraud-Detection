@@ -35,7 +35,7 @@ df = pd.read_csv('credit card.csv',sep=',')
 df.head()
 ```
 
-## Exploratory Data Analysis
+### Exploratory Data Analysis
 
 ```
 df.info()
@@ -113,6 +113,20 @@ plt.figure(figsize=(20,20))
 #plot heat map
 g=sns.heatmap(df[top_corr_features].corr(),annot=True,cmap="RdYlGn")
 ```
+### Data Preprocessing
+```
+X = df.drop('Class', axis=1)
+y = df['Class']
+```
+```
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+```
+nan_indices = y_train.index[y_train.isnull()]
+X_train_cleaned = X_train.drop(index=nan_indices)
+y_train_cleaned = y_train.drop(index=nan_indices)
+```
+
 
 
 
